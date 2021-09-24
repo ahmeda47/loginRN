@@ -1,19 +1,40 @@
 import React from 'react'
 import {useState} from 'react'
-import { StyleSheet, Text, View, TextInput,Button } from 'react-native'
+import { StyleSheet, View, TextInput,Button } from 'react-native'
+
+import axios from 'axios';
+
+// import client from '../api/client'
+
 
 export default function Register() {
+
     const [firstName, setFirstName] = useState('')
     const [lastName, setLastName] = useState('')
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
 
+    // const fetchApi = (data) =>{
+    //     axios.get('http://192.168.0.18:3000/register')
+    //     console.log(data)
+    // }
+
+
     const handleSubmit = () =>{
-        console.log(firstName)
-        console.log(lastName)
-        console.log(username)
-        console.log(password)
-    }
+      const data = {
+        "firstName": firstName,
+        "lastName": lastName,
+        "username": username,
+        "password": password
+      }
+      
+        // fetchApi(data)
+        console.log(data)
+
+        // await axios.post('http://192.168.0.18:3000/', data)
+         axios.post('http://192.168.0.18:3000/',{...data})
+  
+      }
   
     return (
     <View style={styles.container}>
